@@ -6,7 +6,7 @@
   <title>{{ site.title | upcase | escape }}</title>
   {% seo title=false %}
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon-ant-left.svg' | relative_url }}?v=4">
-  <link rel="stylesheet" href="{{ '/assets/css/notebook.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/notebook.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
   <script defer src="{{ '/assets/js/handwriting.js' | relative_url }}"></script>
   {% if page.scratchpad %}<script defer src="{{ '/assets/js/scratchpad.js' | relative_url }}"></script>{% endif %}
 </head>
