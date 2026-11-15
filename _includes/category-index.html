@@ -1,0 +1,6 @@
+{%- assign post_category_names = '' | split: ',' -%}
+{%- for post_group in site.categories -%}
+  {%- assign post_category_names = post_category_names | push: post_group[0] -%}
+{%- endfor -%}
+{%- assign post_category_names = post_category_names | sort -%}
+{%- assign category_names = site.blog_categories | concat: post_category_names | uniq -%}

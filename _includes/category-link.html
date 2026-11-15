@@ -1,0 +1,8 @@
+{%- include category-index.html -%}
+{%- for category_name in category_names -%}
+  {%- if category_name == include.name -%}
+    {%- capture category_fragment -%}#category-{{ forloop.index }}{%- endcapture -%}
+    <a class="tag" href="{{ '/categories/' | relative_url }}{{ category_fragment }}">{{ include.name | capitalize | escape }}</a>
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}

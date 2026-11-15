@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+ <path d="M7 5h18v22l-2 2H7Z" fill="#fff" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+ <path d="M7 5h18v22l-2 2H7Z" fill="#fafaf5" stroke="#60656a" stroke-width=".75" stroke-linejoin="round"/>
+ <path d="M7 5h18v6H7Z" fill="#255a9b"/>
+ <path d="M7 11h18v6H7Z" fill="#fff"/>
+ <path d="M7 17h18v6H7Z" fill="#202328"/>
+ <path d="M8.2 5.5v17" stroke="#fff" stroke-width=".65" opacity=".3"/>
+ <text x="16" y="15.8" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="4.8" letter-spacing=".2" fill="#202328">MONO</text>
+ <path d="M7 26.5h18M23 27v2" fill="none" stroke="#d7d9d7" stroke-width=".6"/>
+</svg>

@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article class="article">
+  <a class="back" href="{{ '/' | relative_url }}">← 모든 글</a>
+  <header class="article-header">
+    <div class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% for category in page.categories %}{% include category-link.html name=category %}{% endfor %}</div>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}
+  </header>
+  <div class="prose">{{ content }}</div>
+</article>

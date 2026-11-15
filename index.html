@@ -1,0 +1,80 @@
+---
+layout: default
+scratchpad: true
+---
+<section class="intro">
+  <div class="intro-text">
+    <p class="eyebrow">Gaemi의 노트</p>
+    <h1>배우고,<br><span class="scribble">기록합니다.</span></h1>
+    <p class="intro-copy">개발하며 배운 개념과 문제를 해결한 과정을 기록합니다.</p>
+    <a class="primary-link" href="#recent-posts">최근 글 보기 <span aria-hidden="true">↘</span></a>
+  </div>
+  <figure class="profile-card">
+    <span class="profile-tape" aria-hidden="true"></span>
+    <span class="profile-label" aria-hidden="true">profile ↴</span>
+    <div class="profile-photo">
+      <img class="profile-image" src="{{ site.profile_image | relative_url }}" alt="{{ site.title | escape }} 프로필" width="320" height="320">
+      <svg class="profile-outline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M5 3 8 2 29 3 31 2 64 3 88 2 96 1 97 7 96 27 97 29 96 57 97 60 96 84 98 88 97 94 99 98 82 97 80 98 58 97 55 98 26 97 19 95 8 97 2 98 3 88 2 86 3 61 2 59 3 34 5 28 2 22 2 10 4 8Z"/>
+      </svg>
+    </div>
+    <figcaption><span>Gaemi</span><small>개발과 배움의 기록</small></figcaption>
+  </figure>
+  <div class="pen-doodles" aria-hidden="true">
+    <svg viewBox="0 0 390 80" fill="none"><g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38C80-12 48 4 30 41S111 5 90 17s-35 51-5 34 60-53 39-39-44 58-12 40S178-1 155 16s-47 54-12 35 63-46 46-37-42 47-21 44 53-32 56-37"/><path d="M243 17q-3 25 10 25m-7-6 7 9 5-10"/><circle cx="298" cy="38" r="21"/><path d="m290 30 1 2m13-3 1 3m-16 13q10 12 20-1M333 38l7 4-8 5"/><circle cx="365" cy="40" r="17"/><path d="m357 34 2 2m12-2 1 2m-16 13q6-10 14-1"/></g></svg>
+  </div>
+</section>
+<div class="notebook-layout">
+  <section aria-labelledby="recent-posts">
+    <div class="section-heading"><h2 id="recent-posts"><span class="section-number">01 /</span> 최근 기록</h2><span>{{ site.posts | size }}개의 글</span></div>
+    <div class="posts">
+      {% for post in site.posts %}
+      <article class="post-card">
+        <div class="post-meta">{% for category in post.categories %}{% include category-link.html name=category %}{% endfor %}<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time></div>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncate: 140 | escape }}</p>
+        <a class="read-more" href="{{ post.url | relative_url }}" aria-label="{{ post.title | escape }} 읽기">글 읽기 <span aria-hidden="true">↗</span></a>
+      </article>
+      {% else %}<p class="empty-state">아직 기록이 없습니다. 첫 번째 이야기를 기다리고 있어요.</p>{% endfor %}
+    </div>
+  </section>
+  <aside class="sidebar" aria-label="블로그 안내">
+    {% include category-index.html %}
+    {% if category_names.size > 0 %}
+    <section class="category-sidebar" aria-labelledby="sidebar-categories">
+      <h2 id="sidebar-categories"><a href="{{ '/categories/' | relative_url }}">카테고리</a></h2>
+      <ul>
+        {% for sidebar_category in category_names %}
+        <li>{% include category-link.html name=sidebar_category %}{% assign category_total = site.categories[sidebar_category] | size %}{% if category_total > 0 %}<span class="category-count">{{ category_total }}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    <div class="note-card">
+      <h2>이 <span class="red-circle">노트</span>에 관하여</h2>
+      <p>개념과 풀이, 시행착오를 정리합니다.</p>
+      <a href="{{ '/about/' | relative_url }}">소개 <span aria-hidden="true">↗</span></a>
+    </div>
+  </aside>
+</div>
+
+<details class="scratchpad" hidden>
+  <summary>낙서하기 <span aria-hidden="true">+</span></summary>
+  <div class="scratchpad-content">
+    <div class="scratchpad-toolbar" role="group" aria-label="낙서 도구">
+      <div class="scratchpad-pens" role="group" aria-label="펜 색상">
+        <button type="button" data-ink="#293f61" aria-label="파란 펜" aria-pressed="true" style="--pen-color:#293f61"><span aria-hidden="true"></span></button>
+        <button type="button" data-ink="#98554e" aria-label="빨간 펜" aria-pressed="false" style="--pen-color:#98554e"><span aria-hidden="true"></span></button>
+        <button type="button" data-ink="#526b46" aria-label="초록 펜" aria-pressed="false" style="--pen-color:#526b46"><span aria-hidden="true"></span></button>
+      </div>
+      <button type="button" data-action="eraser" aria-pressed="false">지우개</button>
+      <button type="button" data-action="undo" disabled>되돌리기</button>
+      <button type="button" data-action="clear" disabled>전체 지우기</button>
+    </div>
+    <div class="scratchpad-paper">
+      <canvas aria-label="마우스나 손가락으로 자유롭게 그리는 임시 낙서 공간">이 브라우저에서는 낙서 공간을 지원하지 않습니다.</canvas>
+    </div>
+    <div class="scratchpad-caption"><p>마우스나 손가락으로 그려보세요. 새로고침하면 지워집니다.</p><button type="button" data-action="close">접기</button></div>
+    <span class="scratchpad-status" role="status" aria-live="polite"></span>
+  </div>
+</details>

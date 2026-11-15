@@ -1,0 +1,46 @@
+---
+layout: default
+title: 주제별 기록
+permalink: /categories/
+description: 주제별로 모아둔 Gaemi의 기록
+---
+{% include category-index.html %}
+<div class="category-page">
+  <header class="category-header">
+    <p class="eyebrow">Gaemi의 노트 / 찾아보기</p>
+    <h1>주제별 기록</h1>
+    <p>주제별로 모아둔 기록입니다.</p>
+  </header>
+  {% if category_names.size > 0 %}
+  <nav class="category-directory" aria-label="카테고리 목차">
+    {% for category_name in category_names %}
+    <a href="#category-{{ forloop.index }}"><span>{{ category_name | capitalize | escape }}</span>{% assign category_total = site.categories[category_name] | size %}{% if category_total > 0 %}<span class="category-count">{{ category_total }}</span>{% endif %}</a>
+    {% endfor %}
+  </nav>
+  <div class="category-groups">
+    {% for category_name in category_names %}
+    {% if site.categories[category_name] %}
+    <section class="category-group" id="category-{{ forloop.index }}" aria-labelledby="category-title-{{ forloop.index }}">
+      <div class="section-heading">
+        <h2 id="category-title-{{ forloop.index }}">{{ category_name | capitalize | escape }}</h2>
+        <span>{{ site.categories[category_name] | size }}개의 글</span>
+      </div>
+      {% assign category_posts = site.categories[category_name] | sort: 'date' | reverse %}
+      <ul class="category-posts">
+        {% for post in category_posts %}
+        <li><a href="{{ post.url | relative_url }}"><span>{{ post.title | escape }}</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time></a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% else %}
+    <details class="category-group category-pending" id="category-{{ forloop.index }}">
+      <summary><span>{{ category_name | capitalize | escape }}</span><small>준비 중</small></summary>
+      <p class="category-empty">아직 등록된 글이 없습니다.</p>
+    </details>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-state">아직 분류된 글이 없습니다.</p>
+  {% endif %}
+</div>
