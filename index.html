@@ -28,7 +28,7 @@ scratchpad: true
   <section aria-labelledby="recent-posts">
     <div class="section-heading"><h2 id="recent-posts"><span class="section-number">01 /</span> 최근 기록</h2><span>{{ site.posts | size }}개의 글</span></div>
     <div class="posts">
-      {% for post in site.posts %}
+      {% for post in site.posts limit:2 %}
       <article class="post-card">
         <div class="post-meta">{% for category in post.categories %}{% include category-link.html name=category %}{% endfor %}<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time></div>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>

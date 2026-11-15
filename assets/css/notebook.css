@@ -196,3 +196,8 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
 
 /* 글 제목은 영문과 한글 모두 나눔펜글씨로 표시합니다. */
 .article-header h1,.prose h1{font-family:'Nanum Pen Script',cursive}
+
+/* 카테고리 이름은 영문과 한글 모두 나눔펜글씨로 통일합니다. */
+.tag,.category-sidebar .tag,.category-directory a>span:first-child,
+.category-group .section-heading h2,.category-pending summary>span,
+.category-sidebar h2{font-family:'Nanum Pen Script',cursive}
