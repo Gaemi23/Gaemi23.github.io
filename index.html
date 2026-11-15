@@ -45,7 +45,7 @@ scratchpad: true
       <h2 id="sidebar-categories"><a href="{{ '/categories/' | relative_url }}">카테고리</a></h2>
       <ul>
         {% for sidebar_category in category_names %}
-        <li>{% include category-link.html name=sidebar_category %}{% assign category_total = site.categories[sidebar_category] | size %}{% if category_total > 0 %}<span class="category-count">{{ category_total }}</span>{% endif %}</li>
+        <li>{% include category-link.html name=sidebar_category %}{% include category-posts.html name=sidebar_category %}{% assign category_total = category_entries | size %}{% if category_total > 0 %}<span class="category-count">{{ category_total }}</span>{% endif %}</li>
         {% endfor %}
       </ul>
     </section>

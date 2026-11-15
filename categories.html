@@ -3,44 +3,45 @@ layout: default
 title: 주제별 기록
 permalink: /categories/
 description: 주제별로 모아둔 Gaemi의 기록
+field_guide: true
 ---
 {% include category-index.html %}
-<div class="category-page">
-  <header class="category-header">
-    <p class="eyebrow">Gaemi의 노트 / 찾아보기</p>
-    <h1>주제별 기록</h1>
-    <p>주제별로 모아둔 기록입니다.</p>
-  </header>
-  {% if category_names.size > 0 %}
-  <nav class="category-directory" aria-label="카테고리 목차">
-    {% for category_name in category_names %}
-    <a href="#category-{{ forloop.index }}"><span>{{ category_name | capitalize | escape }}</span>{% assign category_total = site.categories[category_name] | size %}{% if category_total > 0 %}<span class="category-count">{{ category_total }}</span>{% endif %}</a>
+<div class="field-guide">
+  <div class="guide-book">
+    <header class="guide-cover">
+      <p class="eyebrow">GAEMI / FIELD NOTES</p>
+      <h1>주제별<br> 기록</h1>
+      <p class="guide-introduction">문제풀이와 학습 기록을<br>분류별로 모았습니다.</p>
+      <div class="guide-cover-rule" aria-hidden="true"></div>
+      <p class="guide-totals"><span>{{ category_names | size }}개의 분류</span><span>{{ site.posts | size }}개의 기록</span></p>
+      <p class="guide-instruction">색인을 골라 펼쳐보세요.</p>
+    </header>
+    <div class="guide-page">
+      <div class="guide-running-header"><span>CONTENTS</span><span data-guide-position>01 / {{ category_names.size | plus: 1 }}</span></div>
+      <form class="guide-search" role="search" data-index-url="{{ '/search-index.json' | relative_url }}" hidden>
+        <label for="guide-search-input">글 검색</label>
+        <div class="guide-search-field"><input id="guide-search-input" type="search" placeholder="제목 · 요약 · 본문" autocomplete="off" aria-describedby="guide-search-status"><button type="button" aria-label="검색어 지우기" data-search-clear hidden>지우기</button></div>
+        <p id="guide-search-status" role="status" aria-live="polite"></p>
+      </form>
+      <section class="guide-panel" id="category-all" aria-labelledby="guide-tab-all">
+        <div class="guide-panel-heading"><h2>전체 기록</h2><span>{{ site.posts | size }}개의 글</span></div>
+        {% include guide-entries.html entries=site.posts %}
+      </section>
+      {% for guide_category in category_names %}
+      {% include category-posts.html name=guide_category %}
+      <section class="guide-panel" id="category-{{ forloop.index }}" aria-labelledby="guide-tab-{{ forloop.index }}">
+        <div class="guide-panel-heading"><h2>{{ guide_category | capitalize | escape }}</h2><span>{{ category_entries | size }}개의 글</span></div>
+        {% include guide-entries.html entries=category_entries %}
+      </section>
+      {% endfor %}
+      <p class="guide-no-results" hidden>이 분류에는 검색어와 일치하는 글이 없습니다.</p>
+      <div class="guide-page-footer"><span>GAEMI’S NOTEBOOK</span><span aria-hidden="true">✳</span></div>
+    </div>
+  </div>
+  <nav class="guide-tabs" aria-label="주제 색인">
+    <a id="guide-tab-all" href="#category-all" data-guide-label="전체" style="--tab-color:#d6dfcb">전체</a>
+    {% for guide_category in category_names %}
+    <a id="guide-tab-{{ forloop.index }}" href="#category-{{ forloop.index }}" data-guide-label="{{ guide_category | capitalize | escape }}" class="guide-tab-{{ forloop.index | modulo: 6 }}">{{ guide_category | capitalize | escape }}</a>
     {% endfor %}
   </nav>
-  <div class="category-groups">
-    {% for category_name in category_names %}
-    {% if site.categories[category_name] %}
-    <section class="category-group" id="category-{{ forloop.index }}" aria-labelledby="category-title-{{ forloop.index }}">
-      <div class="section-heading">
-        <h2 id="category-title-{{ forloop.index }}">{{ category_name | capitalize | escape }}</h2>
-        <span>{{ site.categories[category_name] | size }}개의 글</span>
-      </div>
-      {% assign category_posts = site.categories[category_name] | sort: 'date' | reverse %}
-      <ul class="category-posts">
-        {% for post in category_posts %}
-        <li><a href="{{ post.url | relative_url }}"><span>{{ post.title | escape }}</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time></a></li>
-        {% endfor %}
-      </ul>
-    </section>
-    {% else %}
-    <details class="category-group category-pending" id="category-{{ forloop.index }}">
-      <summary><span>{{ category_name | capitalize | escape }}</span><small>준비 중</small></summary>
-      <p class="category-empty">아직 등록된 글이 없습니다.</p>
-    </details>
-    {% endif %}
-    {% endfor %}
-  </div>
-  {% else %}
-  <p class="empty-state">아직 분류된 글이 없습니다.</p>
-  {% endif %}
 </div>

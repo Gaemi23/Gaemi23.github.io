@@ -204,3 +204,130 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
 
 /* 목록에서도 글 상세와 동일한 제목 글꼴을 사용합니다. */
 .post-card h3,.category-posts a>span{font-family:'Nanum Pen Script',cursive}
+
+/* 펼친 도감과 가장자리 색인. */
+.field-guide{position:relative;margin:38px 55px 24px 0}
+.guide-book{display:grid;grid-template-columns:34% minmax(0,1fr);min-height:455px;position:relative;border:1px solid #c7be9d88;border-radius:3px 7px 7px 3px;background:#fbf7e9;box-shadow:2px 3px 0 #e5ddc7,4px 5px 0 -1px #d4cbb4,0 10px 24px #655b3012}
+.guide-cover{padding:34px 27px 30px;background:linear-gradient(90deg,#eae9d4,#f2efdd 85%,#ddd8c64d);border-right:1px solid #bbb29166;position:relative;border-radius:3px 0 0 3px}
+.guide-cover:after{content:'';position:absolute;right:-13px;top:0;bottom:0;width:24px;background:linear-gradient(90deg,#6c5e3712,transparent);pointer-events:none}
+.guide-cover .eyebrow{font:10px/1.7 var(--body);letter-spacing:1.2px;color:#68715d}
+.guide-cover h1{font:46px/1.06 'Nanum Pen Script',cursive;margin:35px 0 20px;color:#374e3a;transform:rotate(-2deg)}
+.guide-introduction{font:12px/1.9 var(--body);color:#68715d;margin:0}
+.guide-cover-rule{width:30px;border-top:1px solid #8d967a;margin:25px 0 18px}
+.guide-totals{font:20px/1.5 'Nanum Pen Script',cursive;color:#68715d;margin:0}
+.guide-instruction{font:11px/1.7 var(--body);color:#747a68;margin:30px 0 0}
+.guide-page{padding:30px 30px 20px;display:flex;flex-direction:column;min-width:0;background:linear-gradient(90deg,#d4c9ac12,transparent 25px),url('../images/paper-grain.svg')}
+.guide-running-header,.guide-page-footer{display:flex;justify-content:space-between;gap:10px;font:9px/1.6 var(--body);letter-spacing:1.1px;color:#8c8b78}
+.guide-panel{margin-top:27px}
+.guide-panel[hidden]{display:none}
+.guide-panel-heading{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-bottom:17px;border-bottom:1px solid #c7be9d66}
+.guide-panel-heading h2{font:32px/1.3 'Nanum Pen Script',cursive}
+.guide-panel-heading>span{font:11px var(--body);color:var(--muted);white-space:nowrap}
+.guide-entries{list-style:none;margin:0;padding:0}
+.guide-entries li{border-bottom:1px solid #c7be9d44}
+.guide-entries a{display:grid;grid-template-columns:20px minmax(0,1fr);gap:7px 10px;align-items:baseline;padding:21px 0}
+.guide-entry-number{font:16px 'Nanum Pen Script',cursive;color:#939782}
+.guide-entry-text strong{display:block;font:28px/1.3 'Nanum Pen Script',cursive}
+.guide-entry-text>span{display:block;font:12px/1.7 var(--body);color:var(--muted);margin-top:7px}
+.guide-entries time{grid-column:2;font:10px/1.5 var(--body);color:#8b8d82;margin-top:3px}
+.guide-page-footer{margin-top:auto;padding-top:35px}
+.guide-page-footer>span:last-child{font:20px/1 var(--hand);color:#889677}
+.guide-empty{padding:48px 0 55px;text-align:center}
+.guide-empty>span{font:27px var(--hand);color:#b7bda8}
+.guide-empty p{font:13px/1.8 var(--body);color:var(--muted);margin:13px 0 5px}
+.guide-empty small{font:11px/1.8 var(--body);color:#8b8d82}
+.guide-tabs{position:absolute;left:100%;top:30px;display:flex;flex-direction:column;gap:7px;z-index:1}
+.guide-tabs a{--tab-color:#e3dbbb;display:block;padding:8px 10px 8px 12px;width:73px;font:21px/1.2 'Nanum Pen Script',cursive;color:#46513e;background:var(--tab-color);border:1px solid #8f927744;border-left:0;border-radius:0 5px 5px 0;box-shadow:2px 2px 2px #655b300a;transition:width .15s,padding-left .15s;white-space:nowrap}
+.guide-tab-1{--tab-color:#e4d0bf!important}.guide-tab-2{--tab-color:#ddd7bf!important}.guide-tab-3{--tab-color:#cfd9d5!important}.guide-tab-4{--tab-color:#d5d6e0!important}.guide-tab-5{--tab-color:#e2d5ce!important}.guide-tab-0{--tab-color:#d6dfcb!important}
+.guide-tabs a[aria-selected=true]{width:84px;padding-left:18px;color:#263e2d;box-shadow:3px 2px 3px #655b3012}
+.guide-tabs a:focus-visible{outline-offset:2px}
+.field-guide:not(.is-interactive) .guide-panel{padding-bottom:20px}
+@media(max-width:900px){.guide-cover{padding:28px 20px}.guide-page{padding:27px 23px 20px}.guide-cover h1{font-size:42px}.guide-tabs a{width:68px;font-size:20px}.guide-tabs a[aria-selected=true]{width:76px}}
+@media(max-width:720px){
+ .field-guide{display:flex;flex-direction:column;margin:28px 0 20px}
+ .guide-tabs{position:static;order:-1;flex-direction:row;flex-wrap:wrap;gap:5px;padding:0 3px;margin-bottom:-1px}
+ .guide-tabs a,.guide-tabs a[aria-selected=true]{width:auto;padding:8px 10px;border:1px solid #8f927744;border-bottom:0;border-radius:4px 4px 0 0;font-size:20px;box-shadow:none}
+ .guide-tabs a[aria-selected=true]{padding-top:6px;border-top:3px solid #738564}
+ .guide-book{display:block;min-height:390px;border-radius:2px 3px 5px 3px}
+ .guide-cover{padding:22px 22px 18px;border-right:0;border-bottom:1px solid #bbb29144;background:#eeeedc}
+ .guide-cover:after,.guide-introduction,.guide-cover-rule,.guide-instruction{display:none}
+ .guide-cover .eyebrow{font-size:8px;letter-spacing:1px}
+ .guide-cover h1{font-size:34px;line-height:1.2;margin:10px 0 7px;transform:none}.guide-cover h1 br{display:none}
+ .guide-totals{font:11px/1.6 var(--body);color:#7a806f}.guide-totals br{display:none}.guide-totals br:after{content:' · '}
+ .guide-page{min-height:285px;padding:20px 20px 17px}
+ .guide-panel{margin-top:19px}.guide-panel-heading{padding-bottom:13px}.guide-panel-heading h2{font-size:29px}
+ .guide-entries a{padding:18px 0}.guide-entry-text strong{font-size:26px}.guide-entry-text>span{font-size:11px}
+ .guide-empty{padding:32px 0 35px}.guide-page-footer{padding-top:26px}
+}
+@media(prefers-reduced-motion:reduce){.guide-tabs a{transition:none}}
+
+.guide-totals>span{display:block}
+@media(max-width:720px){.guide-totals>span{display:inline}.guide-totals>span+span:before{content:' · ';white-space:pre}}
+.field-guide{margin-right:65px}
+.guide-tabs a{width:90px;font-size:20px}
+.guide-tabs a[aria-selected=true]{width:100px}
+.guide-panel:focus{outline:none}
+.guide-panel:focus-visible{outline:1px dashed #738564;outline-offset:7px}
+@media(max-width:900px){.guide-tabs a{width:86px;font-size:19px}.guide-tabs a[aria-selected=true]{width:94px}}
+@media(max-width:720px){.field-guide{margin-right:0}.guide-tabs a,.guide-tabs a[aria-selected=true]{width:auto;font-size:20px}}
+.guide-search{margin:22px 0 0}
+.guide-search>label{display:block;font:11px/1.5 var(--body);color:var(--muted);margin-bottom:7px}
+.guide-search-field{display:flex;align-items:center;gap:8px;border-bottom:1px solid #a6ab9555}
+.guide-search input{min-width:0;flex:1;width:100%;border:0;padding:9px 0;background:transparent;font:13px/1.6 var(--body);color:var(--ink);border-radius:0}
+.guide-search input:focus{outline:none}
+.guide-search-field:focus-within{border-color:#738564;box-shadow:0 1px #738564}
+.guide-search input::-webkit-search-cancel-button{-webkit-appearance:none}
+.guide-search button{border:0;background:transparent;padding:10px 0 10px 8px;font:11px var(--body);color:var(--muted);cursor:pointer}
+.guide-search button:focus-visible{outline:2px dashed var(--red);outline-offset:3px}
+.guide-search [role=status]{font:10px/1.6 var(--body);color:var(--muted);min-height:16px;margin:6px 0 0}
+.guide-no-results{font:13px/1.9 var(--body);color:var(--muted);text-align:center;padding:34px 0 45px;margin:0}
+.guide-search[hidden],.guide-search button[hidden],.guide-no-results[hidden],.guide-empty[hidden],.guide-entries li[hidden]{display:none}
+@media(max-width:720px){.guide-search{margin-top:17px}.guide-search input{font-size:16px}}
+
+/* 검색 결과 수와 무관하게 책과 결과 영역의 크기를 유지합니다. */
+.field-guide.is-interactive .guide-book{height:580px;min-height:0}
+.field-guide.is-interactive .guide-page{min-height:0;overflow:hidden}
+.field-guide.is-interactive .guide-panel{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a8af98 transparent;padding-right:4px}
+.guide-running-header,.guide-search,.guide-page-footer{flex-shrink:0}
+.field-guide.is-interactive .guide-page-footer{margin-top:0;padding-top:20px}
+.field-guide.is-interactive .guide-panel-heading{position:sticky;top:0;z-index:1;background:#fbf7e9}
+@media(max-width:720px){
+ .field-guide.is-interactive .guide-book{height:auto;min-height:0}
+ .field-guide.is-interactive .guide-page{height:500px;min-height:0}
+}
+
+.post-toc{margin:0 0 32px;padding:17px 20px;background:#edeedc77;border-left:2px solid #91a17a77;border-radius:2px}
+.post-toc[hidden]{display:none}
+.post-toc summary{cursor:pointer;font:25px/1.3 'Nanum Pen Script',cursive}
+.post-toc ol{list-style:none;margin:13px 0 0;padding:0}
+.post-toc li{font:13px/1.75 var(--body);margin:6px 0}
+.post-toc li.toc-subheading{padding-left:17px;font-size:12px}
+.post-toc a{display:inline-block;padding:2px 0}
+.prose h2,.prose h3{scroll-margin-top:30px}
+.code-block{margin:24px 0;border:1px solid #b9bfbd66;border-radius:3px;overflow:hidden;background:#efecdf}
+.code-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:7px 13px;border-bottom:1px solid #b9bfbd44;font:11px var(--mono);color:var(--muted)}
+.code-toolbar button{border:1px solid #8f977c44;border-radius:3px;background:#f8f4e799;color:var(--ink);padding:7px 10px;min-height:32px;font:11px var(--body);cursor:pointer}
+.code-toolbar button:disabled{cursor:wait;opacity:.6}
+.code-toolbar button:focus-visible{outline:2px dashed var(--red);outline-offset:2px}
+.prose .code-block pre{margin:0;border:0;border-radius:0;background:transparent}
+.copy-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.not-found{max-width:650px;margin:75px auto 100px}
+.not-found h1{font:43px/1.3 'Nanum Pen Script',cursive;margin:24px 0}
+.not-found>p:not(.eyebrow){font:15px/1.9 var(--body);color:var(--muted)}
+.not-found-links{display:flex;flex-wrap:wrap;gap:16px 27px;margin-top:25px}
+.not-found-links a{font:23px/1.4 'Nanum Pen Script',cursive;border-bottom:1px solid #34436655}
+@media(max-width:720px){.post-toc{padding:15px 16px}.not-found{margin:48px 0 65px}.not-found h1{font-size:35px}}
+.code-toolbar button{display:grid;place-items:center;width:36px;min-height:34px;padding:7px}
+.code-toolbar button svg{display:block;width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.code-toolbar button[data-state=success]{color:#526b46;border-color:#526b4655}
+.code-toolbar button[data-state=error]{color:var(--red);border-color:#98554e55}
+@media(pointer:coarse){.code-toolbar button{width:44px;min-height:44px}}
+
+/* 테두리 없이 가볍게 표시하는 복사 버튼. */
+.code-toolbar button{width:34px;min-height:34px;padding:8px;border:0;border-radius:6px;background:transparent;color:#687077;transition:background-color .15s,color .15s}
+.code-toolbar button:hover:not(:disabled){background:#293f610b;color:#303a43}
+.code-toolbar button svg{width:16px;height:16px;stroke-width:1.7}
+.code-toolbar button[data-state=success]{color:#526174;border:0}
+.code-toolbar button[data-state=error]{color:var(--red);border:0}
+@media(pointer:coarse){.code-toolbar button{width:44px;min-height:44px}}
+@media(prefers-reduced-motion:reduce){.code-toolbar button{transition:none}}

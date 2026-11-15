@@ -1,6 +1,8 @@
 {%- include category-index.html -%}
+{%- assign link_category_name = include.name | downcase -%}
 {%- for category_name in category_names -%}
-  {%- if category_name == include.name -%}
+  {%- assign canonical_link_name = category_name | downcase -%}
+  {%- if canonical_link_name == link_category_name -%}
     {%- capture category_fragment -%}#category-{{ forloop.index }}{%- endcapture -%}
     <a class="tag" href="{{ '/categories/' | relative_url }}{{ category_fragment }}">{{ include.name | capitalize | escape }}</a>
     {%- break -%}

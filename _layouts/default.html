@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ site.title | upcase | escape }}</title>
   {% seo title=false %}
+  {% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon-ant-left.svg' | relative_url }}?v=4">
   <link rel="stylesheet" href="{{ '/assets/css/notebook.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
   <script defer src="{{ '/assets/js/handwriting.js' | relative_url }}"></script>
+  {% if page.layout == 'post' %}<script defer src="{{ '/assets/js/article-features.js' | relative_url }}"></script>{% endif %}
+  {% if page.field_guide %}<script defer src="{{ '/assets/js/field-guide.js' | relative_url }}"></script>{% endif %}
   {% if page.scratchpad %}<script defer src="{{ '/assets/js/scratchpad.js' | relative_url }}"></script>{% endif %}
 </head>
 <body>

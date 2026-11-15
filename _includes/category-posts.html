@@ -1,0 +1,9 @@
+{%- assign category_entries = '' | split: ',' -%}
+{%- assign requested_category = include.name | downcase -%}
+{%- for entry_group in site.categories -%}
+  {%- assign entry_name = entry_group[0] | downcase -%}
+  {%- if entry_name == requested_category -%}
+    {%- assign category_entries = category_entries | concat: entry_group[1] -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign category_entries = category_entries | uniq | sort: 'date' | reverse -%}

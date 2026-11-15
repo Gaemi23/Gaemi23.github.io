@@ -1,0 +1,9 @@
+{% if include.entries.size > 0 %}
+<ol class="guide-entries">
+  {% for entry in include.entries %}
+  <li data-post-url="{{ entry.url | relative_url }}" data-search="{{ entry.title | append: ' ' | append: entry.description | escape }}"><a href="{{ entry.url | relative_url }}"><span class="guide-entry-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span class="guide-entry-text"><strong>{{ entry.title | escape }}</strong>{% if entry.description %}<span>{{ entry.description | escape }}</span>{% endif %}</span><time datetime="{{ entry.date | date_to_xmlschema }}">{{ entry.date | date: '%Y.%m.%d' }}</time></a></li>
+  {% endfor %}
+</ol>
+{% else %}
+<div class="guide-empty"><span aria-hidden="true">—</span><p>아직 기록된 글이 없습니다.</p><small>이 주제의 기록이 여기에 모입니다.</small></div>
+{% endif %}

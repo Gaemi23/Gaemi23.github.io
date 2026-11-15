@@ -10,6 +10,7 @@ markdown: kramdown
 highlighter: rouge
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 defaults:
   - scope:
       path: ""
@@ -29,5 +30,5 @@ exclude:
 # 실제 사진 파일을 assets/images에 넣고 이 경로를 바꾸세요.
 profile_image: /assets/images/gaemi.png
 
-# 글이 없어도 목차에 표시하는 기본 카테고리 (글에도 소문자로 작성)
-blog_categories: [pwn, rev, crypto, web, forensics, misc]
+# 글이 없어도 목차에 표시하는 기본 카테고리 (글의 대소문자는 자동으로 통합)
+blog_categories: [Pwn, Rev, Crypto, Web, Forensics, Misc]

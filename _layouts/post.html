@@ -8,5 +8,10 @@ layout: default
     <h1>{{ page.title | escape }}</h1>
     {% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}
   </header>
+  {% unless page.toc == false %}
+  <nav class="post-toc" aria-label="글 목차" hidden>
+    <details open><summary>목차</summary><ol></ol></details>
+  </nav>
+  {% endunless %}
   <div class="prose">{{ content }}</div>
 </article>

@@ -1,6 +1,15 @@
 {%- assign post_category_names = '' | split: ',' -%}
 {%- for post_group in site.categories -%}
-  {%- assign post_category_names = post_category_names | push: post_group[0] -%}
+  {%- assign normalized_category = post_group[0] -%}
+  {%- assign lower_category = post_group[0] | downcase -%}
+  {%- for preset_category in site.blog_categories -%}
+    {%- assign lower_preset = preset_category | downcase -%}
+    {%- if lower_category == lower_preset -%}
+      {%- assign normalized_category = preset_category -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign post_category_names = post_category_names | push: normalized_category -%}
 {%- endfor -%}
 {%- assign post_category_names = post_category_names | sort -%}
 {%- assign category_names = site.blog_categories | concat: post_category_names | uniq -%}
