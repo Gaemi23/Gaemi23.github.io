@@ -201,3 +201,6 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
 .tag,.category-sidebar .tag,.category-directory a>span:first-child,
 .category-group .section-heading h2,.category-pending summary>span,
 .category-sidebar h2{font-family:'Nanum Pen Script',cursive}
+
+/* 목록에서도 글 상세와 동일한 제목 글꼴을 사용합니다. */
+.post-card h3,.category-posts a>span{font-family:'Nanum Pen Script',cursive}
