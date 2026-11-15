@@ -193,3 +193,6 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
 .brand:hover{opacity:.8}
 @media(max-width:720px){.brand-wordmark{width:126px}}
 @media(max-width:380px){.brand-wordmark{width:102px}}
+
+/* 글 제목은 영문과 한글 모두 나눔펜글씨로 표시합니다. */
+.article-header h1,.prose h1{font-family:'Nanum Pen Script',cursive}
