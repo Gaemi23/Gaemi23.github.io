@@ -20,7 +20,7 @@
       item.append(link);
       list.append(item);
     });
-    toc.querySelector('summary').textContent = `목차 · ${headings.length}개 항목`;
+    toc.querySelector('summary').textContent = '목차';
     toc.hidden = false;
   }
 
